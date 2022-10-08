@@ -12,6 +12,8 @@ The tool can output a TUM, a KITTI file, or both if necessary.
 
 # Using EVO
 
+For general information about Evo, please, see the official project web page: https://github.com/MichaelGrupp/evo
+
 ## Plotting trajectories
 
 To plot trajectories against a reference, it is sufficient to call:
