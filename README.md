@@ -2,7 +2,8 @@
 
 # Download the dataset
 A link to the dataset:
-```https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sharing
+```
+https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sharing
 ```
 
 # Evaluate your odometry or SLAM trajectory
@@ -12,7 +13,7 @@ Save your poses you would like to evaluate as individual `.txt` files containing
 
 To run the code type: 
 
-```python .tools/pp2evo.py -w <path_to_dir_ppix_matrices> -t <output_tum_file_format> -k <output_kitti_file_format>```
+```python ./tools/pp2evo.py -w <path_to_dir_ppix_matrices> -t <output_tum_file_format> -k <output_kitti_file_format>```
 
 
 The tool can output a TUM, a KITTI file, or both if necessary.
@@ -49,7 +50,8 @@ TODO....
 
 
 # How to cite
-```@inproceedings{trzeciak2022conslam,
+```
+@inproceedings{trzeciak2022conslam,
   title={ConSLAM: Periodically Collected Real-World Construction Dataset for SLAM and Progress Monitoring},
   author={Trzeciak, Maciej and Pluta, Kacper and Fathy, Yasmin and Alcalde, Lucio and Chee, Stanley and Bromley, Antony and Brilakis, Ioannis and Alliez, Pierre},
   year={2022},
