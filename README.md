@@ -5,6 +5,7 @@ A link to the dataset:
 ```
 https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sharing
 ```
+*The bag file in sequence 1 is faulty. Do no use it for your SLAM algorithms*
 
 # Evaluate your odometry or SLAM trajectory
 We have extended a popular trajectory evaluation package [evo](https://github.com/MichaelGrupp/evo) for odometry and SLAM trajectory evaluation.
