@@ -43,15 +43,34 @@ Note that the zip file can be used for further plotting in using `evo_res`, e.g.
 
 ## Generating high-quality plots
 
-TODO.... 
+To generate plots ready for a paper, set up the configuration of Evo as you desire with `evo config`, for example:
 
+``` sh
+evo_config set plot_seaborn_style whitegrid \
+               plot_fontfamily serif plot_fontscale 1.2 \
+               plot_linewidth 1.0 \
+               plot_figsize 5 4.5 \
+               ros_map_unknown_cell_value 128 \
+               plot_usetex               
+ ```
 
-# TODOs
-- [ ] generating high-quality plots 
+Before and after:
 
+  <a href="https://github.com/MichaelGrupp/evo/wiki/images/plot_style_default.png" target="_blank">
+    <img src="https://github.com/MichaelGrupp/evo/wiki/images/plot_style_default.png" alt="evo" height="200" border="5" />
+  </a>
+  
+  <a href="https://github.com/MichaelGrupp/evo/wiki/images/plot_style_changed.png" target="_blank">
+    <img src="https://github.com/MichaelGrupp/evo/wiki/images/plot_style_changed.png" alt="evo" height="200" border="5" />
+  </a>
+
+You can find more information about this configuration [here](https://github.com/MichaelGrupp/evo/wiki/Plotting).
+
+# TODO
+- [ ] Replace evo images with ConSLAM trajectories.
 
 # How to cite
-```
+```bibtex
 @inproceedings{trzeciak2022conslam,
   title={ConSLAM: Periodically Collected Real-World Construction Dataset for SLAM and Progress Monitoring},
   author={Trzeciak, Maciej and Pluta, Kacper and Fathy, Yasmin and Alcalde, Lucio and Chee, Stanley and Bromley, Antony and Brilakis, Ioannis and Alliez, Pierre},
