@@ -19,7 +19,7 @@
   </p>
 
   <h3 align="center">
-    <a href="https://link.springer.com/chapter/10.1007/978-3-031-25082-8_21">ECCVW 2022 Paper</a> |
+    <a href="https://link.springer.com/chapter/10.1007/978-3-031-25082-8_21">ECCV 2022 Workshops Paper</a> |
     <a href="https://www.repository.cam.ac.uk/handle/1810/345700">Free Journal Extension Paper</a>
 
   </h3>
@@ -160,8 +160,9 @@ coming soon -->
 
 
 # Citation
+Please cite either of the papers:
 ```bibtex
-@inproceedings{trzeciak2022conslam,
+@inproceedings{trzeciak2023conslam,
   title={Conslam: Periodically collected real-world construction dataset for SLAM and progress monitoring},
   author={Trzeciak, Maciej and Pluta, Kacper and Fathy, Yasmin and Alcalde, Lucio and Chee, Stanley and Bromley, Antony and Brilakis, Ioannis and Alliez, Pierre},
   booktitle={Computer Vision--ECCV 2022 Workshops: Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part VII},
@@ -171,7 +172,7 @@ coming soon -->
 }
 ```
 ```bibtex
-@article{trzeciak2023conslam,
+@article{trzeciak2023conslamExtension,
   title={ConSLAM: Construction Data Set for SLAM},
   author={Trzeciak, Maciej and Pluta, Kacper and Fathy, Yasmin and Alcalde, Lucio and Chee, Stanley and Bromley, Antony and Brilakis, Ioannis and Alliez, Pierre},
   journal={Journal of Computing in Civil Engineering},
