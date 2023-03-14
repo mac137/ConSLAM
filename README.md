@@ -1,13 +1,86 @@
-# ConSLAM
+  <h1 align="center">
+  ConSLAM: Construction Dataset for SLAM</h1>
+  <p align="center">
+    <a href="https://mac137.github.io"><strong>Maciej Trzeciak</strong></a>
+    ·
+    <a href="https://copyme.github.io"><strong>Kacper Pluta</strong></a>
+    ·
+    <a href="https://yasminfathy.github.io"><strong>Yasmin Fathy</strong></a>
+    ·
+    <a href=""><strong>Lucio Alcalde</strong></a>
+    ·
+    <a href=""><strong>Stanley Chee</strong></a>
+    ·
+    <a href=""><strong>Antony Bromley</strong></a>
+    ·
+    <a href="https://cit.eng.cam.ac.uk/lab-director"><strong>Ioannis Brilakis</strong></a>
+    ·
+    <a href="https://team.inria.fr/titane/pierre-alliez/"><strong>Pierre Alliez</strong></a>
+  </p>
+
+  <h3 align="center">
+    <a href="https://link.springer.com/chapter/10.1007/978-3-031-25082-8_21">ECCVW 2022 Paper</a> |
+    <a href="https://www.repository.cam.ac.uk/handle/1810/345700">Free Journal Extension Paper</a>
+
+  </h3>
+  <div align="center"></div>
+</p>
+<p align="center">
+  <a href="#">
+    <img src="./media/intro.gif" alt="" width="90%">
+  </a>
+</p>
+
+<details open="open" style='padding: 10px; border-radius:5px 30px 30px 5px; border-style: solid; border-width: 1px;'>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#download-the-dataset">Download the dataset</a>
+    </li>
+    <li>
+      <a href="#hardware">Hardware</a>
+    </li>
+    <li>
+      <a href="#evaluate-your-trajectory">Evaluate your trajectory</a>
+    </li>
+    <!-- <li>
+      <a href="#install-code">Install code</a>
+    </li> -->
+    <!-- <li>
+      <a href="#faq">FAQ</a>
+    </li> -->
+    <li>
+      <a href="#todo">TODOs</a>
+    </li>
+    <li>
+      <a href="#citation">Citation</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+  </ol>
+</details>
+
+
+
 
 # Download the dataset
-A link to the dataset:
-```
-https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sharing
-```
-*The bag file in sequence 1 is faulty. Do no use it for your SLAM algorithms*
 
-# Evaluate your odometry or SLAM trajectory
+<!-- ```
+https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sharing
+``` -->
+<a href="https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sharing">LINK</a> to the dataset
+
+<span style="color:red">The bag file in sequence 1 is faulty. Do no use it for your SLAM algorithm</span>
+
+# Hardware
+<p align="left">
+  <a href="#">
+    <img src="./media/scanner.png" alt="" width="50%">
+  </a>
+</p>
+
+# Evaluate your trajectory
 We have extended a popular trajectory evaluation package [evo](https://github.com/MichaelGrupp/evo) for odometry and SLAM trajectory evaluation.
 
 Save your poses you would like to evaluate as individual `.txt` files containing 4x4 pose matrices. Our script in `tools/` can then convert the poses into two file formats that EVO uses. These file formats are TUM and KITTI.
@@ -66,15 +139,53 @@ Before and after:
 
 You can find more information about this configuration [here](https://github.com/MichaelGrupp/evo/wiki/Plotting).
 
+<!-- # Install code
+Install the code used for data collection on construction site.
+<p align="left">
+  <a href="#">
+    <img src="./media/flow.png" alt="" width="50%">
+  </a>
+</p>
+
+coming soon
+
+
+# FAQ
+coming soon -->
+
+
+
 # TODO
 - [ ] Replace evo images with ConSLAM trajectories.
 
-# How to cite
+
+# Citation
 ```bibtex
 @inproceedings{trzeciak2022conslam,
-  title={ConSLAM: Periodically Collected Real-World Construction Dataset for SLAM and Progress Monitoring},
+  title={Conslam: Periodically collected real-world construction dataset for SLAM and progress monitoring},
   author={Trzeciak, Maciej and Pluta, Kacper and Fathy, Yasmin and Alcalde, Lucio and Chee, Stanley and Bromley, Antony and Brilakis, Ioannis and Alliez, Pierre},
-  year={2022},
-  booktitle={European Conference on Computer Vision Workshops 2022}
+  booktitle={Computer Vision--ECCV 2022 Workshops: Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part VII},
+  pages={317--331},
+  year={2023},
+  organization={Springer}
 }
 ```
+```bibtex
+@article{trzeciak2023conslam,
+  title={ConSLAM: Construction Data Set for SLAM},
+  author={Trzeciak, Maciej and Pluta, Kacper and Fathy, Yasmin and Alcalde, Lucio and Chee, Stanley and Bromley, Antony and Brilakis, Ioannis and Alliez, Pierre},
+  journal={Journal of Computing in Civil Engineering},
+  volume={37},
+  number={3},
+  pages={04023009},
+  year={2023},
+  publisher={American Society of Civil Engineers}
+}
+```
+
+<!-- # License
+- [ ] todo!!! -->
+
+
+# Contact
+I have ideas on how to improve this dataset, but I am just about to graduate so I might not have much time to work on this these months. If you are interested in cooperation, feel free to reach out: <a href="https://mac137.github.io"><strong>mac137.github.io</strong></a>
