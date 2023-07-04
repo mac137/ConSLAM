@@ -80,6 +80,20 @@ https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sha
   </a>
 </p>
 
+# Software installation
+*Tested on Ubuntu 20.04 with ROS Noetic.*
+
+1. Clone this repo to your catkin work space `path/to/ros_ws/src`
+2. Install the dependencies of the packages in this repo using for example `rosdep install --from-paths src --ignore-src -r -y` as instructed [here](http://wiki.ros.org/rosdep)
+3. Install the packages in this repo using a standard `catkin_make` command as instructed [here](http://wiki.ros.org/catkin/commands/catkin_make)
+  
+
+# How to run
+Connect all the sensors: RGB camera, Velodyne and IMU to your computer/laptop.
+Make sure the system recongises them all.
+
+Run `roslaunch pp_launcher 4london.launch`
+
 # Evaluate your trajectory
 We have extended a popular trajectory evaluation package [evo](https://github.com/MichaelGrupp/evo) for odometry and SLAM trajectory evaluation.
 
@@ -157,6 +171,7 @@ coming soon -->
 
 # TODO
 - [ ] Replace evo images with ConSLAM trajectories.
+- [ ] create a docker image for faster installation
 
 
 # Citation
@@ -184,9 +199,14 @@ Please cite either of the papers:
 }
 ```
 
-<!-- # License
-- [ ] todo!!! -->
-
 
 # Contact
 I have ideas on how to improve this dataset, but I am just about to graduate so I might not have much time to work on this these months. If you are interested in cooperation, feel free to reach out: <a href="https://mac137.github.io"><strong>mac137.github.io</strong></a>
+
+
+# License
+Copyright (C) 2023, University of Cambridge, all rights reserved.
+ 
+THIS SOFTWARE IS PROVIDED “AS IS” FOR ACADEMIC USE ONLY AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY. OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
