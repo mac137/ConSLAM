@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<launch>
+    <arg name="stdout" default="screen" />
+    <node pkg="tf" type="static_transform_publisher" name="sensor2_rot_tf" args="0 0 0 -1.57079632679 0 -1.57079632679 rotated_pp_rgb pp_rgb 10" />
+    <node pkg="tf" type="static_transform_publisher" name="velo2cam_tf" args="-0.0215235 0.0081025 0.0631593 -0.0576157 -0.0017837 -0.0017467 rotated_pp_rgb velodyne 100" />
+</launch>

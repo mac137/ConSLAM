@@ -1,0 +1,26 @@
+image_width: 2592
+image_height: 1944
+camera_name: pp_nir
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [2753.33489,    0.     , 1307.25754,
+            0.     , 2749.44213,  936.72462,
+            0.     ,    0.     ,    1.     ]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.283888, 0.158605, 0.000015, 0.000025, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [0.,    0.     , 0.,    0.     ,
+            0.     , 0.,  0.,    0.     ,
+            0.     ,    0.     ,    0.     ,    0.     ]

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pp_alvium_driver</name>
+  <version>0.0.1</version>
+  <description>pp_alvium_driver node</description>
+
+  <author>Maciej Trzeciak</author>
+  <maintainer email="maciej.trzeciak@hotmail.com">Maciej Trzeciak</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>message_generation</depend>
+  <depend>message_runtime</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>dynamic_reconfigure</depend>
+  <depend>camera_info_manager</depend>
+  <depend>diagnostic_updater</depend>
+  <depend>std_msgs</depend>
+  <depend>polled_camera</depend>
+  <depend>image_geometry</depend>
+  <depend>image_transport</depend>
+  <depend>image_view</depend>
+</package>

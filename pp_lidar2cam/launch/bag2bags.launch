@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- <node pkg="rqt_console" name="rqt_console" type="rqt_console" /> -->
+
+    <!-- -*- the correct_velo_stamps starts with outdoors_start_sensors.launch -*- -->
+    <!-- <include file="$(find pp_lidar2cam_projector)/launch/correct_velo_stamps.launch" /> -->
+    
+    
+    <arg name="path2save_bags" default="/media/psf/Home/Downloads/scans/1" doc=""/>
+    <arg name="sync_difference_time" default="0.035" doc="max time diff between the timestamps of imgs and lidar msgs"/>
+    <arg name="subscriber_rgb_topic" default="pp_rgb/synced2points"/>
+    <arg name="subscriber_lidar_topic" default="pp_points/synced2rgb"/>	
+    <arg name="handle_nir_too" default="False"/>
+    <arg name="subscriber_nir_topic" default="pp_nir/synced2points"/>
+
+
+<!--     the command "launch-prefix... delays the node start" -->
+    <arg name="node_start_delay" default="2.0" />
+    <node pkg="pp_lidar2cam_projector" name="bag2bags" type="bag2bags" output="screen">
+        <param name="sync_difference_time" value="$(arg sync_difference_time)"/>
+        <param name="subscriber_rgb_topic" value="$(arg subscriber_rgb_topic)"/>
+        <param name="subscriber_lidar_topic" value="$(arg subscriber_lidar_topic)"/>
+        <!-- <param name="lidar_topic2publish" value="$(arg lidar_topic2publish)"/>
+        <param name="camera_topic2publish" value="$(arg camera_topic2publish)"/> -->
+        <param name="handle_nir_too" value="$(arg handle_nir_too)"/>
+        <param name="subscriber_nir_topic" value="$(arg subscriber_nir_topic)"/>
+        <param name="path2save_bags" value="$(arg path2save_bags)"/>
+    </node>
+
+</launch>

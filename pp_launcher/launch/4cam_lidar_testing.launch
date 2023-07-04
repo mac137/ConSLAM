@@ -1,0 +1,92 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <!-- -*- DRIVERS -*- -->
+  <!-- -*- velodyne-related settings -*- -->
+  <arg name="lidar_max_range" value="40.0" />
+  <arg name="lidar_min_range" value="1.1" />
+  <arg name="lidar_pcap_time" value="false" />
+  <arg name="lidar_timestamp_first_packet" value="true" />
+
+  <!-- -*- rgb-related settings -*- -->
+  <arg name="rgb_path2cam_calib_yaml" value="$(find pp_alvium_driver)/calib/210719_rgb.yaml"/>
+  <arg name="rgb_exposure_time" value="2200" doc="Absolute value in microseconds (10^-6s) (no max or something)"/>
+  <!-- <arg name="rgb_hardware_delay_correction" value="0.026" doc="Absolute value in seconds. This is due to the lag in transfering imgs from the cam to the callback"/> -->
+  <arg name="rgb_hardware_delay_correction" value="0.02" doc="Absolute value in seconds. This is due to the lag in transfering imgs from the cam to the callback"/>
+  <arg name="rgb_published_img_topic" value="/pp_rgb/raw" doc="name of the camera images topic"/>
+  <arg name="rgb_publish_camera_info" value="true" doc="ALWAYS KEEP TRUE! Write true to publish camera info too"/>
+  <arg name="rgb_published_caminfo_topic" value="/pp_rgb/camera_info" doc="name of the camera info topic"/>
+
+  <!-- -*- nir cam settings -*- -->
+  <!-- -*- nir will run in conda...-*- -->
+    <arg name="camera_topic2publish_nir" default="pp_nir/synced2points"/>
+
+  <!-- -*- imu settings -*- -->
+    <arg name="imu_topic" default="imu/data"/>
+
+
+  <!-- -*- SYNCHRONIZATION -*- -->
+  <!-- -*- velo timestamps correction -*- -->
+    <arg name="lidar_topic2sub" default="velodyne_points" doc="Topic to subscribe origianl velodyne points"/>
+    <arg name="lidar_topic_to_publish_with_correct_timestamps" value="pp/velodyne_points_timestamp_corrected" />
+  <!-- -*- velo-rgb sync -*- -->
+    <arg name="sync_difference_time" default="0.01" doc="max time diff between the timestamps of imgs and lidar msgs"/>
+    <arg name="lidar_topic2publish_rgb" default="pp/points_synced2rgb"/>
+    <arg name="camera_topic2publish_rgb" default="pp_rgb/synced2points"/>
+
+
+  <!-- -*- MONITORING -*- -->	 
+     <arg name="monitor_lidar" value="true"/>
+     <arg name="monitor_imu" value="false"/>     
+     <arg name="monitor_rgb" value="true"/>
+     <arg name="monitor_nir" value="false"/>
+    
+     
+  <!-- -*- LAUNCHING NODES -*- -->
+  <!-- -*- dont change settings here -*- -->
+  <include file="$(find velodyne_pointcloud)/launch/pp_VLP16_points.launch">
+    <arg name="max_range" value="$(arg lidar_max_range)"/>
+    <arg name="min_range" value="$(arg lidar_min_range)"/>
+    <arg name="pcap_time" value="$(arg lidar_pcap_time)"/>
+    <arg name="timestamp_first_packet" value="$(arg lidar_timestamp_first_packet)"/>
+  </include>
+
+  <include file="$(find velodyne_pointcloud)/launch/cpp_correct_velo_stamps.launch">
+    <arg name="lidar_topic2sub" value="$(arg lidar_topic2sub)"/>
+    <arg name="lidar_topic2publish" value="$(arg lidar_topic_to_publish_with_correct_timestamps)"/>
+  </include>
+
+  <include file="$(find pp_alvium_driver)/launch/rgb_only_python.launch">
+    <arg name="path2cam_calib_yaml" value="$(arg rgb_path2cam_calib_yaml)"/>
+    <arg name="exposure_time" value="$(arg rgb_exposure_time)"/>
+    <arg name="hardware_delay_correction" value="$(arg rgb_hardware_delay_correction)"/>
+    <arg name="published_img_topic" value="$(arg rgb_published_img_topic)"/>
+    <arg name="publish_camera_info" value="$(arg rgb_publish_camera_info)"/>
+    <arg name="published_caminfo_topic" value="$(arg rgb_published_caminfo_topic)"/>
+  </include>
+
+  <!-- <node  name="xsens_mti_node" pkg="xsens_mti_driver" type="xsens_mti_node" output="screen">
+    <rosparam command="load" file="$(find xsens_mti_driver)/param/xsens_mti_node.yaml" />
+  </node> -->
+
+  <include file="$(find pp_lidar2cam_projector)/launch/sync_rgb_with_points.launch">
+    <arg name="sync_difference_time" value="$(arg sync_difference_time)"/>
+    <arg name="subscriber_rgb_topic" value="$(arg rgb_published_img_topic)"/>
+    <arg name="subscriber_lidar_topic" value="$(arg lidar_topic_to_publish_with_correct_timestamps)"/>
+    <arg name="lidar_topic2publish" value="$(arg lidar_topic2publish_rgb)"/>
+    <arg name="camera_topic2publish" value="$(arg camera_topic2publish_rgb)"/>
+  </include>
+  
+  <include file="$(find pp_monitor)/launch/points_imu_rgb_nir.launch">
+    <arg name="monitor_lidar" value="$(arg monitor_lidar"/>
+    <arg name="lidar_topic" value="$(arg lidar_topic2publish_rgb)"/>
+    <arg name="monitor_imu" value="$(arg monitor_imu)"/>
+    <arg name="imu_topic" value="$(arg imu_topic)"/>
+    <arg name="monitor_rgb" value="$(arg monitor_rgb)"/>
+    <arg name="rgb_topic" value="$(arg camera_topic2publish_rgb)"/>
+    <arg name="monitor_nir" value="$(arg monitor_nir)"/>
+    <arg name="nir_topic" value="$(arg camera_topic2publish_nir)"/>
+  </include>
+
+
+</launch>

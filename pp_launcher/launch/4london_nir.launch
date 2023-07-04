@@ -1,0 +1,43 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <!-- -*- DRIVERS -*- -->
+  <arg name="lidar_topic_to_publish_with_correct_timestamps" value="pp_points/timestamp_corrected" />
+
+  <!-- -*- nir cam settings -*- -->
+  <arg name="nir_path2cam_calib_yaml" value="$(find pp_alvium_driver)/calib/220314_nir_2point5k.yaml"/>
+  <arg name="nir_exposure_time" value="3000" doc="Absolute value in microseconds (10^-6s) (no max or something)"/>
+  <arg name="nir_hardware_delay_correction" value="0.0125" doc="Absolute value in seconds. This is due to the lag in transfering imgs from the cam to the callback"/>
+  <arg name="nir_published_img_topic" value="/pp_nir/raw" doc="name of the camera images topic"/>
+  <arg name="nir_publish_camera_info" value="true" doc="Write true to publish camera info too"/>
+  <arg name="nir_published_caminfo_topic" value="/pp_nir/camera_info" doc="name of the camera info topic"/>
+
+
+  <!-- -*- SYNCHRONIZATION -*- -->
+  <!-- -*- nir-related settings -*- -->
+    <arg name="sync_difference_time" default="0.015" doc="max time diff between the timestamps of imgs and lidar msgs"/>
+    <arg name="lidar_topic2publish_nir" default="trash2"/>
+    <arg name="camera_topic2publish_nir" default="pp_nir/synced2points"/>
+	    
+
+  <!-- -*- LAUNCHING NODES -*- -->
+  <!-- -*- dont change settings here -*- -->
+
+  <include file="$(find pp_alvium_driver)/launch/nir_only_python.launch">
+    <arg name="path2cam_calib_yaml" value="$(arg nir_path2cam_calib_yaml)"/>
+    <arg name="exposure_time" value="$(arg nir_exposure_time)"/>
+    <arg name="hardware_delay_correction" value="$(arg nir_hardware_delay_correction)"/>
+    <arg name="published_img_topic" value="$(arg nir_published_img_topic)"/>
+    <arg name="publish_camera_info" value="$(arg nir_publish_camera_info)"/>
+    <arg name="published_caminfo_topic" value="$(arg nir_published_caminfo_topic)"/>
+  </include>
+
+  <include file="$(find pp_lidar2cam_projector)/launch/sync_nir_with_points.launch">
+    <arg name="sync_difference_time" value="$(arg sync_difference_time)"/>
+    <arg name="subscriber_rgb_topic" value="$(arg nir_published_img_topic)"/>
+    <arg name="subscriber_lidar_topic" value="$(arg lidar_topic_to_publish_with_correct_timestamps)"/>
+    <arg name="lidar_topic2publish" value="$(arg lidar_topic2publish_nir)"/>
+    <arg name="camera_topic2publish" value="$(arg camera_topic2publish_nir)"/>
+  </include>
+
+</launch>

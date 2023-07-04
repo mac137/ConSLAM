@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+    <include file="$(find pp_lidar2cam_projector)/calib/220310_rgb2cam.launch" />
+    <!-- -*- the correct_velo_stamps starts with outdoors_start_sensors.launch -*- -->
+    <!-- <include file="$(find pp_lidar2cam_projector)/launch/correct_velo_stamps.launch" /> -->
+
+
+    <node pkg="pp_lidar2cam_projector" name="projector2" type="projector2.py" output="screen">
+        <!-- <rosparam file="$(find pp_lidar2cam_projector)/config/params.yaml" command="load"/> -->
+        <rosparam>
+        path2cam_calib_yaml: /home/maciej/ros1_wss/pp_ws_collector/src/pp_alvium_driver/calib/210719_rgb.yaml
+        sync_difference_time: 0.03
+        depth_factor: 655.35
+        save_images_and_lidar_bags: 0
+        save_depth_maps: 0
+        create_control: 1
+        subscriber_img_topic: "pp_rgb/synced2points"
+        input_images_are_distorted: True
+        subscriber_lidar_topic: "pp_points/synced2rgb"
+        publisher_img_topic: "pp/lidar2cam_projection"
+        publish_colourised_pcd_msgs: True
+        </rosparam>
+    </node>
+
+</launch>

@@ -1,0 +1,26 @@
+image_width: 2064
+image_height: 1544
+camera_name: pp_nir
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [2187.46357,    0.     , 1050.84776,
+            0.     , 2182.60933,  758.00261,
+            0.     ,    0.     ,    1.     ]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.272522, 0.137143, 0.000374, -0.001290, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+projection_matrix: # 210724: this is Maciej's projection mtx for undist and cropped imgs which works for his system
+  rows: 3
+  cols: 3
+  data: [1987.71948,    0.     , 1018.26258,   0.0,
+            0.     , 1984.04858,  712.331880,  0.0,
+            0.     ,    0.     ,    1.0,       0.0      ]

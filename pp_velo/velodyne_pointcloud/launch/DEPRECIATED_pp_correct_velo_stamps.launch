@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="lidar_topic2sub" default="velodyne_points" doc="Topic to subscribe origianl velodyne points"/>
+    <arg name="lidar_topic2publish" default="pp/velodyne_points_timestamps_corrected" doc="Topic to publish velo points with corrected timestamps"/>
+
+    <node pkg="velodyne_pointcloud" name="velodyne_timestamp_corrector" type="velodyne_timestamp_corrector.py" output="screen">
+        <param name="lidar_topic2sub" value="$(arg lidar_topic2sub)"/>
+        <param name="lidar_topic2publish" value="$(arg lidar_topic2publish)"/>
+        <param name="debug" value="false"/>
+    </node>
+
+</launch>

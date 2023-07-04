@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pp_launcher</name>
+  <version>0.0.1</version>
+  <description>pp_launcher</description>
+
+  <author>Maciej Trzeciak - University of Cambridge</author>
+  <maintainer email="maciej.trzeciak@hotmail.com">Maciej Trzeciak</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- <node pkg="rqt_console" name="rqt_console" type="rqt_console" /> -->
+
+    <arg name="monitor_lidar" default="true"/>
+    <arg name="lidar_topic" default="pp/points_synced2rgb"/>
+
+    <arg name="monitor_imu" default="true"/>
+    <arg name="imu_topic" default="imu/data"/>
+
+    <arg name="monitor_rgb" default="true"/>
+    <arg name="rgb_topic" default="pp/rgb_synced2points"/>
+
+    <arg name="monitor_nir" default="true"/>
+    <arg name="nir_topic" default="pp/nir_synced2points"/>
+
+
+    <node pkg="pp_monitor" name="pp_topic_monitor" type="monitor.py" output="screen">
+        <param name="monitor_lidar" value="$(arg monitor_lidar)"/>
+        <param name="lidar_topic" value="$(arg lidar_topic)"/>
+
+        <param name="monitor_imu" value="$(arg monitor_imu)"/>
+        <param name="imu_topic" value="$(arg imu_topic)"/>
+
+        <param name="monitor_rgb" value="$(arg monitor_rgb)"/>
+        <param name="rgb_topic" value="$(arg rgb_topic)"/>
+
+        <param name="monitor_nir" value="$(arg monitor_nir)"/>
+        <param name="nir_topic" value="$(arg nir_topic)"/>
+    </node>
+
+</launch>

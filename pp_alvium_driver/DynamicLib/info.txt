@@ -1,0 +1,7 @@
+this x86_64bit folder with the dyn libraries inside were copied from the Vimba_4_2/VimbaCPP package of the original vimba drivers
+
+
+the arm_64bit is copied from Vimba 5.1
+
+more info on:
+https://www.alliedvision.com/en/support/technical-documentation/alvium-usb-documentation/

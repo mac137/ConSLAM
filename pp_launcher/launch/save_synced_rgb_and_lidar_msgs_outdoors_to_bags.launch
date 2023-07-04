@@ -1,0 +1,20 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <!-- -*- time synchronisation options -*- -->
+  <arg name="sync_difference_time" value="0.001" />
+  <arg name="subscriber_rgb_topic" value="pp/rgb_raw" />
+  <arg name="subscriber_lidar_topic" value="pp/velodyne_points_4_sync" />
+  <arg name="save_nir_too" value="false" />
+
+
+  <!-- -*- dont change settings here -*- -->
+  <include file="$(find pp_lidar2cam_projector)/launch/save_rgb_lidar_to_bags.launch">
+    <arg name="sync_difference_time" value="$(arg sync_difference_time)"/>
+    <arg name="subscriber_rgb_topic" value="$(arg subscriber_rgb_topic)"/>
+    <arg name="subscriber_lidar_topic" value="$(arg subscriber_lidar_topic)"/>
+    <arg name="save_nir_too" value="$(arg save_nir_too)"/>
+  </include>
+
+
+</launch>

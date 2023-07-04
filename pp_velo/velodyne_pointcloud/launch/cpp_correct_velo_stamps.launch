@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="lidar_topic2sub" default="pp/points_synced2rgb" doc="Topic to subscribe origianl velodyne points"/>
+    <arg name="lidar_topic2publish" default="pp/velodyne_points_timestamps_corrected" doc="Topic to publish velo points with corrected timestamps"/>
+    <arg name="half_view_width" default="5.0" doc="Half width in the field of view in fron of velo"/>
+
+    <node pkg="velodyne_pointcloud" name="cpp_correct_velo_timestamps" type="cpp_correct_velo_timestamps" output="screen">
+        <param name="lidar_topic2sub" value="$(arg lidar_topic2sub)"/>
+        <param name="lidar_topic2publish" value="$(arg lidar_topic2publish)"/>
+        <param name="half_view_width" value="$(arg half_view_width)"/>
+    </node>
+
+</launch>

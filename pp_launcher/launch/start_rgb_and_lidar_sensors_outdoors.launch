@@ -1,0 +1,60 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <!-- -*- velodyne-related settings -*- -->
+  <arg name="lidar_max_range" value="100.0" />
+  <arg name="lidar_min_range" value="1.2" />
+  <arg name="lidar_pcap_time" value="true" />
+  <arg name="lidar_timestamp_first_packet" value="true" />
+  <arg name="lidar_topic_to_publish_with_correct_timestamps" value="pp/velodyne_points_4_sync" />
+
+  <!-- -*- rgb-cam-related settings -*- -->
+  <arg name="rgb_path2cam_calib_yaml" value="file://$(find pp_alvium_driver)/calib/210719_rgb.yaml"/>
+  <arg name="rgb_exposure_time" value="2200" doc="Absolute value in microseconds (10^-6s) (no max or something)"/>
+  <arg name="rgb_hardware_delay_correction" value="0.026" doc="Absolute value in seconds. This is due to the lag in transfering imgs from the cam to the callback"/>
+  <arg name="rgb_published_img_topic" value="/pp/rgb_raw" doc="name of the camera images topic"/>
+  <arg name="rgb_publish_camera_info" value="true" doc="Write true to publish camera info too"/>
+  <arg name="rgb_published_caminfo_topic" value="/pp/rgb_cam_info" doc="name of the camera info topic"/>
+
+  <!-- -*- nir cam settings -*- -->
+  <!-- <arg name="nir_path2cam_calib_yaml" value="file://$(find pp_alvium_driver)/calib/210722_nir.yaml"/>
+  <arg name="nir_exposure_time" value="2200" doc="Absolute value in microseconds (10^-6s) (no max or something)"/>
+  <arg name="nir_hardware_delay_correction" value="0.026" doc="Absolute value in seconds. This is due to the lag in transfering imgs from the cam to the callback"/>
+  <arg name="nir_published_img_topic" value="pp/nir_raw" doc="name of the camera images topic"/>
+  <arg name="nir_publish_camera_info" value="true" doc="Write true to publish camera info too"/>
+  <arg name="nir_published_caminfo_topic" value="/pp/nir_cam_info" doc="name of the camera info topic"/> -->
+
+
+
+  <!-- -*- dont change settings here -*- -->
+  <include file="$(find velodyne_pointcloud)/launch/pp_VLP16_points.launch">
+    <arg name="max_range" value="$(arg lidar_max_range)"/>
+    <arg name="min_range" value="$(arg lidar_min_range)"/>
+    <arg name="pcap_time" value="$(arg lidar_pcap_time)"/>
+    <arg name="timestamp_first_packet" value="$(arg lidar_timestamp_first_packet)"/>
+  </include>
+
+  <include file="$(find velodyne_pointcloud)/launch/correct_velo_stamps.launch">
+    <arg name="lidar_topic2publish" value="$(arg lidar_topic_to_publish_with_correct_timestamps)"/>
+  </include>
+
+  <include file="$(find pp_alvium_driver)/launch/rgb_only_python.launch">
+    <arg name="path2cam_calib_yaml" value="$(arg rgb_path2cam_calib_yaml)"/>
+    <arg name="exposure_time" value="$(arg rgb_exposure_time)"/>
+    <arg name="hardware_delay_correction" value="$(arg rgb_hardware_delay_correction)"/>
+    <arg name="published_img_topic" value="$(arg rgb_published_img_topic)"/>
+    <arg name="publish_camera_info" value="$(arg rgb_publish_camera_info)"/>
+    <arg name="published_caminfo_topic" value="$(arg rgb_published_caminfo_topic)"/>
+  </include>
+
+  <!-- <include file="$(find pp_alvium_driver)/launch/nir_only_python.launch">
+    <arg name="path2cam_calib_yaml" value="$(arg nir_path2cam_calib_yaml)"/>
+    <arg name="exposure_time" value="$(arg nir_exposure_time)"/>
+    <arg name="hardware_delay_correction" value="$(arg nir_hardware_delay_correction)"/>
+    <arg name="published_img_topic" value="$(arg nir_published_img_topic)"/>
+    <arg name="publish_camera_info" value="$(arg nir_publish_camera_info)"/>
+    <arg name="published_caminfo_topic" value="$(arg nir_published_caminfo_topic)"/>
+  </include> -->
+
+
+</launch>
