@@ -76,7 +76,8 @@ https://drive.google.com/drive/folders/1qOZGXjlLQNu15xakG7NqE5WEv3Iu9akr?usp=sha
 # Hardware
 <p align="left">
   <a href="#">
-    <img src="./media/scanner.png" alt="" width="50%">
+    <img src="./media/scanner.png" alt="" width="45%">
+    <img src="./media/leica.jpg" alt="" width="45%">
   </a>
 </p>
 
@@ -204,7 +205,7 @@ Please cite either of the papers:
 I have ideas on how to improve this dataset, but I am just about to graduate so I might not have much time to work on this these months. If you are interested in cooperation, feel free to reach out: <a href="https://mac137.github.io"><strong>mac137.github.io</strong></a>
 
 
-# License
+# Licence
 Copyright (C) 2023, University of Cambridge, all rights reserved.
  
 THIS SOFTWARE IS PROVIDED “AS IS” FOR ACADEMIC USE ONLY AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
