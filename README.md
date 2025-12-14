@@ -66,7 +66,7 @@
 
 # Download the dataset
 
-<a href="https://drive.google.com/drive/folders/1TNDcmwLG_P1kWPz3aawCm9ts85kUTvnU?usp=share_link">LINK</a> to the dataset
+<a href="https://ug.link/nas-polyform/filemgr/share-download/?id=0bac12bf9c6940b3b4a0dc0dd52c8a77">LINK</a> to the dataset
 
 <span style="color:red">The bag file in sequence 1 is faulty. Do no use it for your SLAM algorithm</span>
 
